@@ -1,0 +1,21 @@
+
+.container {
+    border: ridge;
+    padding: 1em;
+    margin-top:1.5em;
+}
+
+.col-left{
+    width:30%;
+}
+
+.col-left input, .col-left select {
+    display: block;
+    margin-top: 1em;
+
+}
+
+table, table th, table td {
+    border: ridge;
+    border-collapse: collapse;
+}
