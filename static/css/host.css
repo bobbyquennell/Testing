@@ -1,21 +1,22 @@
 
 .container {
     border: ridge;
-    padding: 60px;
+    padding: 39px;
     margin-top:1.5em;
 }
 
 .col-left{
-    width:30%;
+    width:80%;
+
 }
 
-.col-left input, .col-left select {
+.col-left input,select {
     display: block;
     margin-top: 1em;
 
 }
 
-.table table, table th, table td {
-    border: ridge;
-    border-collapse: collapse;
+/*.table tr {*/
+    /*/!*border: ridge;*!/*/
+    /*border-collapse: collapse;*/
 }
