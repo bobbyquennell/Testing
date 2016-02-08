@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse,render_to_response,redirect
+from django.shortcuts import render,HttpResponse,render_to_response,HttpResponseRedirect
 from . import models
 
 #django.db.models.manager.Manager
@@ -43,7 +43,7 @@ def login(request):
         if is_empty:
             count = models.UserInfo.objects.filter(name = user, password = pwd).count()
             if count == 1:
-                return render_to_response('index.html')
+                return HttpResponseRedirect('index/')
             else:
                 ret['status'] = 'Username or password is invalid, please try again.'
                 return render_to_response('login.html',ret)
@@ -58,6 +58,6 @@ def index(request):
 
 
 def host(request):
-    ret = {'status':'','data':None,'group':None}
+    return render_to_response('host.html')
 
 
