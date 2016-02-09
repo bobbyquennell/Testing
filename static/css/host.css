@@ -1,15 +1,16 @@
 
 .container {
     border: ridge;
-    /*padding: 30px;*/
+    padding: 30px;
     margin-top:1.5em;
+    height:200px
 
 
 }
 
 .col-left{
     width:80%;
-    margin-left: 20px;
+
 
 }
 
@@ -20,11 +21,7 @@
 }
 
 /*.table tr {*/
-    /*/!*border: ridge;*!/*/
+    /*border: ridge;   */
     /*border-collapse: collapse;*/
-}
+/*}*/
 
-.table {
-
-    margin-left: 20px;
-}
