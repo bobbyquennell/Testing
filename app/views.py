@@ -71,6 +71,8 @@ def index(request):
 
 
 def host(request):
-    return render_to_response('host.html')
-
+    ret = {'status':'','group':None,'data':None}
+    group_name = models.Group.objects.all()
+    ret['group'] = group_name
+    return render_to_response('host.html',ret)
 
