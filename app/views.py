@@ -1,11 +1,11 @@
-from django.shortcuts import render,HttpResponse,render_to_response,HttpResponseRedirect
+from django.shortcuts import render,HttpResponse,render_to_response,HttpResponseRedirect,redirect
 from . import models
 
 #django.db.models.manager.Manager
 
 
-def artical(requeset,year,month,artical_id):
-    return HttpResponse('DDDD')
+# def artical(requeset,year,month,artical_id):
+#     return HttpResponse('DDDD')
 
 
 def add(request,name):
@@ -34,6 +34,19 @@ def view(request,name):
     return HttpResponse("view")
 
 
+# workaround to register a user into database
+# def register(request):
+#     r1 = models.Role.objects.create(role_name='admin')
+#     r2 = models.Role.objects.create(role_name='user')
+#     u1 = models.UserInfo.objects.create(name="Yang",password="123",
+#                                         email='yang.wang04@gmail.com',gender='f',role_id=r1)
+#     g1 = models.Group.objects.create(group_name='groupA')
+#     g2 = models.Group.objects.create(group_name='groupB')
+#     g1.user.add(u1)
+#     g2.user.add(u1)
+#     return HttpResponse("Register is successfully!")
+
+
 def login(request):
     ret = {'status': ''}
     if request.method == 'POST':
@@ -43,7 +56,7 @@ def login(request):
         if is_empty:
             count = models.UserInfo.objects.filter(name = user, password = pwd).count()
             if count == 1:
-                return HttpResponseRedirect('index/')
+                return redirect('app/index/')
             else:
                 ret['status'] = 'Username or password is invalid, please try again.'
                 return render_to_response('login.html',ret)

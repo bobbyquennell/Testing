@@ -19,8 +19,8 @@ from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^artical/(\d{4})/(\d{2})/(\d+)/$',views.artical),
-    url(r'^artical/(?P<year>\d{4})/$',views.artical,{'month':11}),
+    # url(r'^artical/(\d{4})/(\d{2})/(\d+)/$',views.artical),
+    # url(r'^artical/(?P<year>\d{4})/$',views.artical,{'month':11}),
     url(r'^add/(?P<name>\w+)/$',views.add),
     url(r'^delete/(?P<id>\d+)/$',views.delete),
     url(r'^update/(?P<id>\d+)/(?P<name>\w+)/$',views.update),
@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^login/$',views.login),
     url(r'^index/$',views.index),
     url(r'^host/$',views.host),
+    # url(r'^register/$',views.register),
 ]

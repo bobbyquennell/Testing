@@ -7,6 +7,7 @@ class Role(models.Model):
 
 class Group(models.Model):
     group_name = models.CharField(max_length=50)
+    user = models.ManyToManyField('UserInfo')
 
 class UserInfo(models.Model):
     name = models.CharField(max_length=50)
@@ -16,9 +17,12 @@ class UserInfo(models.Model):
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
     role_id = models.ForeignKey(Role)
-    group_relation = models.ManyToManyField(Group)
 
 
+class Asset(models.Model):
+    host_name = models.CharField(max_length=256)
+    ip_address = models.GenericIPAddressField
+    user_group = models.ForeignKey(Group)
 
 
 
