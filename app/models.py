@@ -16,12 +16,12 @@ class UserInfo(models.Model):
     gender = models.BooleanField(default=True)
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
-    role_id = models.ForeignKey(Role)
+    role = models.ForeignKey(Role)
 
 
 class Asset(models.Model):
     host_name = models.CharField(max_length=256)
-    ip_address = models.GenericIPAddressField
+    ip_address = models.GenericIPAddressField()
     user_group = models.ForeignKey(Group)
 
 

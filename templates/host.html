@@ -9,19 +9,19 @@
 <div class="container">
     <div class="col-left">
         <h3>添加主机</h3>
-        <form action="/app/host" method="post">
+        <h6 style="color: red">{{ status }}</h6>
+        <form action="/app/host/" method="post">
             <p><input type="text" name="hostname" placeholder="hostname"></p>
             <p><input type="text" name="ip" placeholder="ip"></p>
             <p>
-
                 <select name="group">
+                    <option selected="selected">请选择</option>
                     {% for item in group %}
                     <option value="{{ item.id }}">{{ item.group_name}}</option>
                     {% endfor %}
                 </select>
 
             </p>
-
             <p><input type="submit" value="添加"></p>
 
         </form>
@@ -42,6 +42,9 @@
 </div>
 </body>
 </html>
+
+
+
 
 
 
