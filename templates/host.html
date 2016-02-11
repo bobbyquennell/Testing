@@ -37,6 +37,14 @@
           <th>IP</th>
           <th>所属用户组</th>
       </tr>
+      {% for item in data %}
+          <tr>
+              <td>{{item.host_name}}</td>
+              <td>{{item.ip_address}}</td>
+              <td>{{item.user_group.group_name}}</td>
+          </tr>
+      {% endfor %}
+
     </table>
 
 </div>

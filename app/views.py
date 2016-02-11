@@ -84,21 +84,22 @@ def host(request):
         host_name = request.POST.get('hostname',None)
         ip_address = request.POST.get('ip',None)
         group_id = request.POST.get('group',None)
+        group_name = models.Group.objects.get(id = group_id)
         is_empty = all([host_name,ip_address])
         if is_empty:
-
-            group_name = models.Group.objects.get(id = group_id)
             print group_name,type(group_name)
             models.Asset.objects.create(host_name = host_name,user_group = group_name ,ip_address = ip_address)
-
-
 
         else:
             ret['status'] = 'Host name or IP is empty, please try again.'
             return render_to_response('host.html',ret)
 
+        asset_data = models.Asset.objects.all()
+        ret['data'] = asset_data
 
     return render_to_response('host.html',ret)
+
+
 
 
 
