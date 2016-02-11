@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse,render_to_response,HttpResponseRedirect,redirect
+from django.shortcuts import render,HttpResponse,render_to_response,redirect
 from . import models
 
 # django.db.models.manager.Manager
