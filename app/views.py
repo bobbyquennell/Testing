@@ -56,7 +56,7 @@ def login(request):
         if is_empty:
             count = models.UserInfo.objects.filter(name = user, password = pwd).count()
             if count == 1:
-                return redirect('app/index/')
+                return redirect('/app/index/')
             else:
                 ret['status'] = 'Username or password is invalid, please try again.'
                 return render_to_response('login.html',ret)

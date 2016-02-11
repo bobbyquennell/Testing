@@ -5,10 +5,6 @@ from django.db import models
 class Role(models.Model):
     role_name = models.CharField(max_length=50)
 
-class Group(models.Model):
-    group_name = models.CharField(max_length=50)
-    user = models.ManyToManyField('UserInfo')
-
 class UserInfo(models.Model):
     name = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
@@ -17,6 +13,10 @@ class UserInfo(models.Model):
     create_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now=True)
     role = models.ForeignKey(Role)
+
+class Group(models.Model):
+    group_name = models.CharField(max_length=50)
+    user = models.ManyToManyField(UserInfo)
 
 
 class Asset(models.Model):
