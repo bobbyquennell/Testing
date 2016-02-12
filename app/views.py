@@ -98,8 +98,13 @@ def host(request):
         ret['data'] = asset_data
 
 
+
+
 # only filter group_name = 'groupB'
 #         asset_data = models.Asset.objects.filter(user_group__group_name='groupB')
+#         ret['data'] = asset_data
+#
+#         asset_data = models.Asset.objects.filter(user_group__id = 1)
 #         ret['data'] = asset_data
 
     # print models.Asset.objects.filter(user_group__group_name='groupB').query
