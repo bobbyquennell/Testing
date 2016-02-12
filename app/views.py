@@ -86,7 +86,7 @@ def host(request):
 
 
 # group's type is <class 'django.db.models.query.QuerySet'> and content is [<Group: Group object>, <Group: Group object>]
-#suspect that <Group: Group object> is a dictionary and an object as well
+#And <Group: Group object> is an object which encapsulates class's attributes and a single record.
     group = models.Group.objects.all()
 
     # group is actually a list, which passed to ret['group'] as value
@@ -102,20 +102,20 @@ def host(request):
         is_empty = all([host_name,ip_address])
         if is_empty:
             print group_name,type(group_name),group_id,type(group_id)
-            models.Asset.objects.create(host_name = host_name,user_group = group_name ,ip_address = ip_address)
+            models.Asset.objects.create(host_name = host_name, group = group_name ,ip_address = ip_address)
 
         else:
             ret['status'] = 'Host name or IP is empty, please try again.'
             return render_to_response('host.html',ret)
 
 # only filter group_name = 'groupB'
-#         asset_data = models.Asset.objects.filter(user_group__group_name='groupB')
+#         asset_data = models.Asset.objects.filter(group__group_name='groupB')
 #         ret['data'] = asset_data
 #
-#         asset_data = models.Asset.objects.filter(user_group__id = 1)
+#         asset_data = models.Asset.objects.filter(group__id = 1)
 #         ret['data'] = asset_data
 
-    # print models.Asset.objects.filter(user_group__group_name='groupB').query
+    # print models.Asset.objects.filter(group__group_name='groupB').query
 
     return render_to_response('host.html',ret)
 

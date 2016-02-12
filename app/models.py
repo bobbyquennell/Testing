@@ -22,7 +22,11 @@ class Group(models.Model):
 class Asset(models.Model):
     host_name = models.CharField(max_length=256)
     ip_address = models.GenericIPAddressField()
-    user_group = models.ForeignKey(Group)
+    group = models.ForeignKey(Group)  #user_group is actually an object.
+    def __unicode__(self):
+        return self.host_name
+
+
 
 
 
