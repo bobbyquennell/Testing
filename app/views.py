@@ -97,7 +97,20 @@ def host(request):
         asset_data = models.Asset.objects.all()
         ret['data'] = asset_data
 
+
+# only filter group_name = 'groupB'
+#         asset_data = models.Asset.objects.filter(user_group__group_name='groupB')
+#         ret['data'] = asset_data
+
+    # print models.Asset.objects.filter(user_group__group_name='groupB').query
+
     return render_to_response('host.html',ret)
+
+
+
+
+
+
 
 
 
