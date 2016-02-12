@@ -77,6 +77,14 @@ def host(request):
     asset_data = models.Asset.objects.all()
     ret['data'] = asset_data
 
+    # asset_data = models.Asset.objects.filter(user_group__id=2)
+    # print type(asset_data),asset_data
+    # asset_data's type is also <class 'django.db.models.query.QuerySet'> and content is [<Asset: Asset object>, <Asset: Asset object>, <Asset: Asset object>]
+    # Therefore, filter is the same as all function
+    # ret['data'] = asset_data
+
+
+
 # group's type is <class 'django.db.models.query.QuerySet'> and content is [<Group: Group object>, <Group: Group object>]
 #suspect that <Group: Group object> is a dictionary and an object as well
     group = models.Group.objects.all()
