@@ -73,12 +73,18 @@ def index(request):
 def host(request):
     ret = {'status':'','group':None,'data':None}
 
-    # type is <class 'django.db.models.query.QuerySet'> and content is [<Group: Group object>, <Group: Group object>]
-    #suspect that <Group: Group object> is a dictionary and an object as well
+
+    asset_data = models.Asset.objects.all()
+    ret['data'] = asset_data
+
+# group's type is <class 'django.db.models.query.QuerySet'> and content is [<Group: Group object>, <Group: Group object>]
+#suspect that <Group: Group object> is a dictionary and an object as well
     group = models.Group.objects.all()
 
     # group is actually a list, which passed to ret['group'] as value
     ret['group'] = group
+
+
     # To add host information into database
     if request.method == 'POST':
         host_name = request.POST.get('hostname',None)
@@ -87,18 +93,12 @@ def host(request):
         group_name = models.Group.objects.get(id = group_id)
         is_empty = all([host_name,ip_address])
         if is_empty:
-            print group_name,type(group_name)
+            print group_name,type(group_name),group_id,type(group_id)
             models.Asset.objects.create(host_name = host_name,user_group = group_name ,ip_address = ip_address)
 
         else:
             ret['status'] = 'Host name or IP is empty, please try again.'
             return render_to_response('host.html',ret)
-
-        asset_data = models.Asset.objects.all()
-        ret['data'] = asset_data
-
-
-
 
 # only filter group_name = 'groupB'
 #         asset_data = models.Asset.objects.filter(user_group__group_name='groupB')

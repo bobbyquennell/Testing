@@ -36,11 +36,13 @@
           <th>主机名</th>
           <th>IP</th>
           <th>所属用户组</th>
+          <th>用户组ID</th>
       </tr>
       {% for item in data %}
           <tr>
               <td>{{item.host_name}}</td>
               <td>{{item.ip_address}}</td>
+              <td>{{item.user_group.id}}</td>
               <td>{{item.user_group.group_name}}</td>
           </tr>
       {% endfor %}
