@@ -9,10 +9,8 @@ class UserInfo(models.Model):
     name = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
-    gender = models.BooleanField(default=True)
-    create_time = models.DateTimeField(auto_now_add=True)
-    update_time = models.DateTimeField(auto_now=True)
     role = models.ForeignKey(Role)
+
 
 class Group(models.Model):
     group_name = models.CharField(max_length=50)
@@ -22,9 +20,10 @@ class Group(models.Model):
 class Asset(models.Model):
     host_name = models.CharField(max_length=256)
     ip_address = models.GenericIPAddressField()
-    group = models.ForeignKey(Group)  #group is actually an object.
+    group = models.ForeignKey(Group)  #group is actually an Class Group's object.
     def __unicode__(self):
         return self.host_name
+
 
 
 

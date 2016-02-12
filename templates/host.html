@@ -14,6 +14,7 @@
             <p><input type="text" name="hostname" placeholder="hostname"></p>
             <p><input type="text" name="ip" placeholder="ip"></p>
             <p>
+                <!--get group data from database-->
                 <select name="group">
                     <option selected="selected">请选择</option>
                     {% for item in group %}
@@ -39,13 +40,15 @@
           <th>所属用户组</th>
 
       </tr>
+
+        <!--get asset data from database-->
       {% for item in data %}
           <tr>
               <td>{{item.host_name}}</td>
               <td>{{item.ip_address}}</td>
               <td>{{item.group.id}}</td>
               <td>{{item.group.group_name}}</td>
-          </tr>
+          </>
       {% endfor %}
 
     </table>
