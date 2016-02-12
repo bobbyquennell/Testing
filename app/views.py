@@ -87,10 +87,10 @@ def host(request):
 
 # group's type is <class 'django.db.models.query.QuerySet'> and content is [<Group: Group object>, <Group: Group object>]
 #And <Group: Group object> is an object which encapsulates class's attributes and a single record.
-    group = models.Group.objects.all()
+    group_data = models.Group.objects.all()
 
     # group is actually a list, which passed to ret['group'] as value
-    ret['group'] = group
+    ret['group'] = group_data
 
 
     # To add host information into database
@@ -98,11 +98,11 @@ def host(request):
         host_name = request.POST.get('hostname',None)
         ip_address = request.POST.get('ip',None)
         group_id = request.POST.get('group',None)
-        group_name = models.Group.objects.get(id = group_id)
+        group = models.Group.objects.get(id = group_id)
         is_empty = all([host_name,ip_address])
         if is_empty:
-            print group_name,type(group_name),group_id,type(group_id)
-            models.Asset.objects.create(host_name = host_name, group = group_name ,ip_address = ip_address)
+            print group,type(group),group_id,type(group_id)
+            models.Asset.objects.create(host_name = host_name, group = group ,ip_address = ip_address)
 
         else:
             ret['status'] = 'Host name or IP is empty, please try again.'
