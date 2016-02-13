@@ -17,6 +17,7 @@ class Group(models.Model):
     user = models.ManyToManyField(UserInfo)
 
 
+
 class Asset(models.Model):
     host_name = models.CharField(max_length=256)
     ip_address = models.GenericIPAddressField()
