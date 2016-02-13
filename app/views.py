@@ -124,9 +124,15 @@ def add_many(request):
 
     u1 = models.UserInfo.objects.get(id = 2)
     g1 = models.Group.objects.get(id = 3)
+
+    # method 1
     g1.user.add(u1)
-    print g1.user.add
+    # print g1.user.add
     # <bound method ManyRelatedManager.add of <django.db.models.fields.related_descriptors.ManyRelatedManager object at 0x103e3a650>>
+
+    # method 2
+    u1.group_set.add(g1)
+
     return HttpResponse('Add successfully')
 
 
