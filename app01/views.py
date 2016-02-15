@@ -16,12 +16,9 @@ def index(request):
             er = form.errors.as_data().values()[0][0].messages[0]
             print type(er)
             ret['error'] = er
+            ret['data'] = form
         return render_to_response('app01/index.html',ret)
     return render_to_response('app01/index.html',ret)
-
-
-
-
 
 
 # def contact(request):
