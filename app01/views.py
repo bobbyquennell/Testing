@@ -4,6 +4,8 @@ from . import forms
 
 def index(request):
     l1 = forms.Login()
+    ret ={'data':None,'error':''}
+    ret['data'] = l1
     if request.method == 'POST':
         form = forms.Login(request.POST)
         #request.POST is a dictionary which includes all data submitted by user
@@ -11,10 +13,11 @@ def index(request):
         if form.is_valid():    # To verify user's input
             pass
         else:
-            er = form.errors
+            er = form.errors.as_data().values()[0][0].messages[0]
             print type(er)
-        return render_to_response('app01/index.html',{'data':l1,'error':er})
-    return render_to_response('app01/index.html',{'data':l1})
+            ret['error'] = er
+        return render_to_response('app01/index.html',ret)
+    return render_to_response('app01/index.html',ret)
 
 
 
