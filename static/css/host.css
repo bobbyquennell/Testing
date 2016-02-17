@@ -15,7 +15,7 @@
 
 }
 
-.col-left input, .col-left select {
+.col-left input, .col-left select {     /*关联选择器*/
     display: block;
     margin-top: 1em;
 
