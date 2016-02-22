@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+
+{% block left_sidebar %}  <!--Don't extends index's content-->
+
+<div>
+
+</div>
+
+{% endblock %}
+
+{% block right_content %}
+<div class="container">
+    <div class="col-left">
+        <h3>添加主机</h3>
+        <h6 style="color: red">{{ status }}</h6>
+        <form action="/app/host/" method="post">
+            <p><input type="text" name="hostname" placeholder="hostname"></p>
+            <p><input type="text" name="ip" placeholder="ip"></p>
+            <p>
+                <!--get group data from database-->
+                <select name="group">
+                    <option selected="selected">请选择</option>
+                    {% for item in group %}
+                    <option value="{{ item.id }}">{{ item.group_name}}</option>
+                    {% endfor %}
+                </select>
+            </p>
+            <p><input type="submit" value="添加"></p>
+
+        </form>
+    </div>
+</div>
+
+
+<div class="container">
+
+    <h3>主机列表</h3>
+    <table border="1">
+      <tr>
+          <th>主机名</th>
+          <th>IP</th>
+          <th>用户组ID</th>
+          <th>所属用户组</th>
+
+      </tr>
+
+        <!--get asset data from database-->
+      {% for item in data %}
+          <tr>
+              <td>{{item.host_name}}</td>
+              <td>{{item.ip_address}}</td>
+              <td>{{item.group.id}}</td>
+              <td>{{item.group.group_name}}</td>
+          </>
+      {% endfor %}
+
+    </table>
+
+</div>
+{% endblock %}
