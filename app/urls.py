@@ -27,9 +27,9 @@ urlpatterns = [
     url(r'^view/(?P<name>\w+)/$',views.view),
     url(r'^login/$',views.login),
     url(r'^index/$',views.index),
-    url(r'^host/$',views.host),
+    url(r'^host/$',views.host,name ='host'),
     url(r'^many/$',views.add_many),
-    url(r'^asset/$',views.asset),
-    url(r'^audit/$',views.audit),
+    url(r'^asset/$',views.asset,name='asset'),
+    url(r'^audit/$',views.audit,name ='audit'),
     # url(r'^register/$',views.register),
 ]
