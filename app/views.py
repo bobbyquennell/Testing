@@ -83,8 +83,6 @@ def host(request):
     # Therefore, filter is the same as all function
     # ret['data'] = asset_data
 
-
-
 # group's type is <class 'django.db.models.query.QuerySet'> and content is [<Group: Group object>, <Group: Group object>]
 #And <Group: Group object> is an object which encapsulates class's attributes and a single record.
     group_data = models.Group.objects.all()
@@ -136,9 +134,14 @@ def add_many(request):
     return HttpResponse('Add successfully')
 
 
+def asset(request):
+    return render(request,'asset.html')
 
 
 
+
+def audit(request):
+    return render(request,'audit.html')
 
 
 
