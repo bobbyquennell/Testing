@@ -19,8 +19,20 @@ class Group(models.Model):
 
 
 class Asset(models.Model):
-    host_name = models.CharField(max_length=256)
-    ip_address = models.GenericIPAddressField()
+    host_name = models.CharField(max_length=256,unique=True)
+    ip_address = models.GenericIPAddressField(unique=True)   #support both ipv4 and ipv6
+    # IPAddressField only supports IPV4
+    port = models.IntegerField(default=22)
+    system_type_choices = (
+
+        ('linux',"LINUX"),
+        ('win32',"WINDOWS")
+
+    )
+    system_type = models.CharField(choices=system_type_choices,max_length=32)
+    enabled = models.BooleanField(default=True)
+    create_date = models.DateTimeField()
+    online_date = models.DateTimeField(auto_now_add=True)
     group = models.ForeignKey(Group)  #group is actually an Class Group's object.
     def __unicode__(self):
         return self.host_name
